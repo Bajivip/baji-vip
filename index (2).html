@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#040a05">
+<title>Baji | Register & Win Big</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; -webkit-tap-highlight-color:transparent; }
+
+  body {
+    background: #040a05;
+    font-family: 'Nunito', 'Segoe UI', sans-serif;
+    color: #eefff2;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content:'';
+    position:fixed; inset:0;
+    background:
+      radial-gradient(ellipse 80% 60% at 10% 20%, rgba(0,255,106,0.055) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 50% at 90% 80%, rgba(0,200,80,0.04) 0%, transparent 55%);
+    pointer-events:none; z-index:0;
+  }
+  body::after {
+    content:'';
+    position:fixed; inset:0;
+    background: repeating-linear-gradient(
+      0deg, transparent, transparent 3px,
+      rgba(0,0,0,0.07) 3px, rgba(0,0,0,0.07) 4px
+    );
+    pointer-events:none; z-index:1;
+  }
+
+  .wrap {
+    position:relative; z-index:2;
+    max-width:520px; margin:0 auto;
+    padding-bottom:48px;
+  }
+
+  @media(min-width:768px){
+    .wrap { max-width:780px; }
+    .baji-card { margin:16px 20px 24px; border-radius:28px; }
+    .baji-body { padding:28px 32px 32px; }
+    .baji-body p { font-size:1.05rem; }
+    .baji-cta { font-size:1.35rem; padding:18px 28px; }
+    .baji-trust { margin:0 20px 24px; }
+    .baji-divider { padding:0 32px 4px; }
+  }
+
+  @media(min-width:1024px){
+    .wrap { max-width:960px; }
+    .baji-card { margin:16px 24px 28px; }
+    .baji-body { padding:32px 40px 36px; }
+    .baji-body p { font-size:1.1rem; line-height:1.8; }
+    .baji-cta { font-size:1.45rem; padding:20px 32px; border-radius:16px; }
+    .baji-trust { margin:0 24px 24px; padding:20px 32px; }
+  }
+
+  /* ── HEADER ── */
+  .baji-header {
+    display:flex; align-items:center; justify-content:space-between;
+    padding:14px 20px;
+    background: rgba(4,10,5,0.95);
+    border-bottom: 1px solid rgba(0,255,106,0.13);
+    position:sticky; top:0; z-index:100;
+    backdrop-filter: blur(10px);
+  }
+  .baji-logo {
+    font-family: 'Rajdhani', 'Impact', sans-serif;
+    font-size: 1.55rem; font-weight: 700; letter-spacing: 0.06em;
+    color: #ff2e2e;
+    text-shadow: 0 0 20px rgba(255,46,46,0.4);
+  }
+  .baji-logo span { color: #ffffff; text-shadow: none; }
+  .baji-live {
+    display:flex; align-items:center; gap:6px;
+    font-size:0.68rem; font-weight:700;
+    letter-spacing:0.14em; text-transform:uppercase;
+    color: #00ff6a;
+    background: rgba(0,255,106,0.08);
+    border: 1px solid rgba(0,255,106,0.28);
+    padding: 5px 10px; border-radius:20px;
+  }
+  .baji-dot {
+    width:7px; height:7px; border-radius:50%;
+    background: #00ff6a; box-shadow: 0 0 8px #00ff6a;
+    animation: baji-blink 1.4s ease-in-out infinite;
+  }
+  @keyframes baji-blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
+
+  /* ── TICKER ── */
+  .baji-ticker-wrap {
+    background: rgba(0,255,106,0.06);
+    border-bottom: 1px solid rgba(0,255,106,0.13);
+    padding: 8px 0; overflow: hidden;
+  }
+  .baji-ticker {
+    display:flex; white-space:nowrap;
+    width: max-content;
+  }
+  .baji-tick {
+    font-size:0.72rem; font-weight:700;
+    letter-spacing:0.08em;
+    color: #00ff6a; padding: 0 28px; opacity:0.85;
+    font-family: 'Nunito', sans-serif;
+  }
+  .baji-tick-gold { color:#ffd166; }
+
+  /* ── CARD ── */
+  .baji-card {
+    margin: 16px 12px 20px;
+    border-radius:24px; overflow:hidden;
+    background: #080f09;
+    border: 2px solid rgba(0,255,106,0.35);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.55), inset 0 1px 0 rgba(0,255,106,0.06);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    position:relative;
+  }
+  .baji-card::before {
+    content:'';
+    position:absolute; inset:0; border-radius:24px;
+    background: linear-gradient(135deg, rgba(0,255,106,0.03) 0%, transparent 60%);
+    pointer-events:none; z-index:0;
+  }
+  .baji-card:hover {
+    transform:translateY(-4px);
+    border-color: rgba(0,255,106,0.5);
+    box-shadow: 0 0 30px rgba(0,255,106,0.18), 0 16px 48px rgba(0,0,0,0.65), inset 0 1px 0 rgba(0,255,106,0.1);
+  }
+
+  /* ── IMAGE ── */
+  .baji-imgbox {
+    width:100%; position:relative; overflow:hidden;
+    background: #050e06;
+  }
+  .baji-imgbox img {
+    width:100%; display:block;
+    object-fit:contain; height:auto;
+    transition: transform 0.5s ease;
+  }
+  .baji-card:hover .baji-imgbox img { transform:scale(1.03); }
+  .baji-imgbox::after {
+    content:'';
+    position:absolute; bottom:0; left:0; right:0; height:40%;
+    background: linear-gradient(to top, #080f09 0%, transparent 100%);
+    pointer-events:none;
+  }
+
+  /* ── CARD BODY ── */
+  .baji-body { padding:20px 20px 24px; position:relative; z-index:1; }
+  .baji-body p {
+    font-size:0.97rem; line-height:1.7;
+    color:#a8c9ae; margin-bottom:20px; font-weight:400;
+    font-family: 'Nunito','Segoe UI',sans-serif;
+  }
+  .baji-body p strong { color:#eefff2; font-weight:700; }
+  .baji-highlight { color:#00ff6a; font-weight:700; }
+
+  /* ── CTA ── */
+  .baji-cta-wrap { position:relative; }
+  .baji-cta-wrap::after {
+    content:'';
+    position:absolute; inset:-3px; border-radius:17px;
+    border:2px solid #00ff6a;
+    opacity:0; pointer-events:none;
+    animation: baji-ring 2.8s ease-out infinite;
+  }
+  @keyframes baji-ring {
+    0%   { opacity:0.5; transform:scale(0.99); }
+    100% { opacity:0;   transform:scale(1.04); }
+  }
+  .baji-cta {
+    display:flex; align-items:center; justify-content:center; gap:10px;
+    width:100%; padding:16px 20px;
+    background: linear-gradient(110deg, #00ff6a 0%, #00c84f 55%, #007a30 100%);
+    color:#000;
+    font-family:'Rajdhani','Impact',sans-serif;
+    font-size:1.25rem; font-weight:700;
+    letter-spacing:0.1em; text-transform:uppercase;
+    text-decoration:none; border:none; border-radius:14px;
+    cursor:pointer; position:relative; overflow:hidden;
+    animation: baji-breathe 1.6s ease-in-out infinite;
+  }
+  @keyframes baji-breathe {
+    0%,100% { transform:scale(1);      box-shadow:0 4px 20px rgba(0,255,106,0.35), 0 1px 0 rgba(255,255,255,0.2) inset; }
+    50%      { transform:scale(1.045); box-shadow:0 8px 32px rgba(0,255,106,0.55), 0 1px 0 rgba(255,255,255,0.25) inset; }
+  }
+  .baji-cta::before {
+    content:'';
+    position:absolute; top:0; left:-100%; width:60%; height:100%;
+    background:linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
+    transition: left 0.5s ease;
+  }
+  .baji-cta:hover::before { left:150%; }
+  .baji-cta:hover {
+    animation-play-state:paused;
+    transform:scale(1.05);
+    box-shadow:0 10px 32px rgba(0,255,106,0.55);
+    color:#000;
+  }
+  .baji-cta:active { animation-play-state:paused; transform:scale(0.97); }
+  .baji-arrow { font-size:1.1rem; transition:transform 0.2s ease; display:inline-block; }
+  .baji-cta:hover .baji-arrow { transform:translateX(4px); }
+
+  /* ── DIVIDER ── */
+  .baji-divider {
+    display:flex; align-items:center; gap:10px;
+    padding:0 24px 4px;
+  }
+  .baji-divline {
+    flex:1; height:1px;
+    background:linear-gradient(90deg, transparent, rgba(0,255,106,0.28), transparent);
+  }
+  .baji-divicon { font-size:1rem; opacity:0.4; color:#eefff2; }
+
+  /* ── TRUST ── */
+  .baji-trust {
+    margin:0 12px 20px;
+    padding:16px 20px; border-radius:16px;
+    background:#080f09; border:1px solid rgba(0,255,106,0.13);
+    display:flex; align-items:center; justify-content:center; flex-wrap:wrap;
+  }
+  .baji-ti {
+    display:flex; align-items:center; gap:5px;
+    font-size:0.7rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase;
+    color:#5d8c68; padding:0 12px;
+    font-family:'Nunito','Segoe UI',sans-serif;
+  }
+  .baji-ti:not(:last-child) { border-right:1px solid rgba(0,255,106,0.13); }
+
+  /* ── FOOTER ── */
+  .baji-foot {
+    padding:18px 20px 4px; text-align:center;
+    font-size:0.65rem; color:#5d8c68; line-height:1.7; opacity:0.7;
+    font-family:'Nunito','Segoe UI',sans-serif;
+  }
+
+  /* ── REVEAL ── */
+  .baji-reveal {
+    opacity:0; transform:translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .baji-reveal.baji-in { opacity:1; transform:translateY(0); }
+
+  @media(max-width:400px){
+    .baji-card { margin:12px 8px 16px; border-radius:20px; }
+    .baji-body { padding:16px 16px 20px; }
+    .baji-cta  { font-size:1.15rem; padding:15px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <!-- HEADER -->
+  <div class="baji-header">
+    <div class="baji-logo">Baji<span>Live</span></div>
+    <div class="baji-live"><div class="baji-dot"></div>Live Now</div>
+  </div>
+
+  <!-- TICKER -->
+  <div class="baji-ticker-wrap">
+    <div class="baji-ticker">
+      <span class="baji-tick">🎰 প্রতিটি সাইন আপে পাচ্ছেন দুর্দান্ত সব অফার!</span>
+      <span class="baji-tick">🔥 ওয়েলকাম বোনাসে পাবেন সর্বোচ্চ <span class="baji-tick-gold">৳১,৭৭৭!</span> (নিশ্চিত)</span>
+      <span class="baji-tick">🏆 ২৮ টি দুর্দান্ত ফ্রী স্পিন! <span class="baji-tick-gold">(সম্পূর্ণ ফ্রি)</span></span>
+      <span class="baji-tick">💥 ফার্স্ট ডিপোজিট বোনাস <span class="baji-tick-gold">৳৯৯৯!</span> (নিশ্চিত)</span>
+      <span class="baji-tick">🔥 আজই রেজিস্ট্রেশন করুন এবং বোনাস উপভোগ করুন! <span class="baji-tick-gold">সুযোগ সীমিত</span></span>
+    </div>
+  </div>
+
+  <!-- CARD 1 -->
+  <div class="baji-card baji-reveal">
+    <div class="baji-imgbox">
+      <img src="https://cdn.jsdelivr.net/gh/Bajivip/image@main/baji%201777%20bonus.webp" alt="Baji 1777 Bonus" loading="lazy">
+    </div>
+    <div class="baji-body">
+      <p><span class="baji-highlight">আপনি কি ৳১,৭৭৭ জিতে নিতে প্রস্তুত?</span> এখনই রেজিস্ট্রেশন বাটনে ক্লিক করে সাইন আপ করুন এবং জিতে নিন দুর্দান্ত ৳১,৭৭৭ বোনাস।</p>
+      <div class="baji-cta-wrap">
+        <a href="https://bjbaji7.live/af/Le33k1UW/join" class="baji-cta" target="_blank" rel="noopener noreferrer">
+          সাইন আপ করুন <span class="baji-arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="baji-divider baji-reveal">
+    <div class="baji-divline"></div>
+    <div class="baji-divicon">◆</div>
+    <div class="baji-divline"></div>
+  </div>
+
+  <!-- CARD 2 -->
+  <div class="baji-card baji-reveal">
+    <div class="baji-imgbox">
+      <img src="https://cdn.jsdelivr.net/gh/Bajivip/image@main/baji%2028%20free%20spin.webp" alt="Baji 28 Free Spin" loading="lazy">
+    </div>
+    <div class="baji-body">
+      <p><span class="baji-highlight">সাইন আপ করুন, জিতুন ২৮টি স্পিন!</span> Baji-তে নতুন সাইন আপ করলেই পাবেন আকর্ষণীয় ২৮টি স্পিন সম্পূর্ণ ফ্রি। নিচের রেজিস্ট্রেশন বাটনে ক্লিক করে এখনই আপনার ফ্রি স্পিন বুঝে নিন।</p>
+      <div class="baji-cta-wrap">
+        <a href="https://bjbaji7.live/af/Le33k1UW/join" class="baji-cta" target="_blank" rel="noopener noreferrer">
+          রেজিস্ট্রেশন করুন <span class="baji-arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="baji-divider baji-reveal">
+    <div class="baji-divline"></div>
+    <div class="baji-divicon">◆</div>
+    <div class="baji-divline"></div>
+  </div>
+
+  <!-- CARD 3 -->
+  <div class="baji-card baji-reveal">
+    <div class="baji-imgbox">
+      <img src="https://cdn.jsdelivr.net/gh/Bajivip/image@main/baji%20777%20Welcome%20bonus.webp" alt="Baji 777 Welcome Bonus" loading="lazy">
+    </div>
+    <div class="baji-body">
+      <p><span class="baji-highlight">এখন ফার্স্ট ডিপোজিটে ৳৭৭৭ বোনাস!</span> আমাদের সাথে আপনার শুরু হোক আনন্দের সাথে। আপনার ফার্স্ট ডিপোজিটে Baji দিচ্ছে ৳৭৭৭ বোনাস। দেরি না করে নিচের রেজিস্ট্রেশন বাটনে দ্রুত ক্লিক করুন এবং আপনার ৳৭৭৭ বোনাস বুঝে নিন!</p>
+      <div class="baji-cta-wrap">
+        <a href="https://bjbaji7.live/af/Le33k1UW/join" class="baji-cta" target="_blank" rel="noopener noreferrer">
+          রেজিস্ট্রেশন করুন <span class="baji-arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- TRUST -->
+  <div class="baji-trust baji-reveal">
+    <div class="baji-ti">🔒 Secure</div>
+    <div class="baji-ti">⚡ Instant Pay</div>
+    <div class="baji-ti">🎖️ Licensed</div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="baji-foot baji-reveal">
+    18+ only. Please gamble responsibly.<br>© 2025 BajiLive. All rights reserved.
+  </div>
+
+</div>
+
+<script>
+  // Scroll reveal
+  var els = document.querySelectorAll('.baji-reveal');
+  if(els.length) {
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e, i){
+        if(e.isIntersecting){
+          setTimeout(function(){ e.target.classList.add('baji-in'); }, i * 60);
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    els.forEach(function(el){ obs.observe(el); });
+  }
+
+  // Ticker
+  var ticker = document.querySelector('.baji-ticker');
+  if(ticker) {
+    var items = ticker.innerHTML;
+    ticker.innerHTML = items + items + items + items;
+    var pos = 0;
+    var speed = 0.5;
+    function step() {
+      pos += speed;
+      if(pos >= ticker.scrollWidth / 2) { pos = 0; }
+      ticker.style.transform = 'translateX(-' + pos + 'px)';
+      requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+</script>
+
+</body>
+</html>
